@@ -8,15 +8,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import java.lang.NumberFormatException
+import kotlinx.android.synthetic.main.activity_main.*
 
 private val STATE_OPERAND1 = "STATE_OPERAND1"
 private val PENDING_OPERATION = "PENDING_OPERATION"
 private val OPERAND1_STORED = "OPERAND1_STORED"
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var result: EditText
-    private lateinit var newNumber: EditText
-    private val displayOperation by lazy { findViewById<TextView>(R.id.operation) }
+//    private lateinit var result: EditText
+//    private lateinit var newNumber: EditText
+//    private val displayOperation by lazy { findViewById<TextView>(R.id.operation) }
 
     private var operand1: Double? = null
 
@@ -25,26 +26,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        result = findViewById(R.id.result)
-        newNumber = findViewById(R.id.newNumber)
-
-        val button0 = findViewById<Button>(R.id.button0)
-        val button1 = findViewById<Button>(R.id.button1)
-        val button2 = findViewById<Button>(R.id.button2)
-        val button3 = findViewById<Button>(R.id.button3)
-        val button4 = findViewById<Button>(R.id.button4)
-        val button5 = findViewById<Button>(R.id.button5)
-        val button6 = findViewById<Button>(R.id.button6)
-        val button7 = findViewById<Button>(R.id.button7)
-        val button8 = findViewById<Button>(R.id.button8)
-        val button9 = findViewById<Button>(R.id.button9)
-        val buttonDot = findViewById<Button>(R.id.buttonDot)
-
-        val buttonDivide = findViewById<Button>(R.id.buttonDivide)
-        val buttonEqual = findViewById<Button>(R.id.buttonEquals)
-        val buttonMultiply = findViewById<Button>(R.id.buttonMultiply)
-        val buttonMinus = findViewById<Button>(R.id.buttonMinus)
-        val buttonPlus = findViewById<Button>(R.id.buttonPlus)
+//        result = findViewById(R.id.result)
+//        newNumber = findViewById(R.id.newNumber)
+//
+//        val button0 = findViewById<Button>(R.id.button0)
+//        val button1 = findViewById<Button>(R.id.button1)
+//        val button2 = findViewById<Button>(R.id.button2)
+//        val button3 = findViewById<Button>(R.id.button3)
+//        val button4 = findViewById<Button>(R.id.button4)
+//        val button5 = findViewById<Button>(R.id.button5)
+//        val button6 = findViewById<Button>(R.id.button6)
+//        val button7 = findViewById<Button>(R.id.button7)
+//        val button8 = findViewById<Button>(R.id.button8)
+//        val button9 = findViewById<Button>(R.id.button9)
+//        val buttonDot = findViewById<Button>(R.id.buttonDot)
+//
+//        val buttonDivide = findViewById<Button>(R.id.buttonDivide)
+//        val buttonEqual = findViewById<Button>(R.id.buttonEquals)
+//        val buttonMultiply = findViewById<Button>(R.id.buttonMultiply)
+//        val buttonMinus = findViewById<Button>(R.id.buttonMinus)
+//        val buttonPlus = findViewById<Button>(R.id.buttonPlus)
 
         val listener = View.OnClickListener { v ->
             val button = v as Button
@@ -61,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                 newNumber.setText("")
             }
             pendingOperation = op
-            displayOperation.text = op
+            operation.text = op
         }
 
         button0.setOnClickListener(listener)
@@ -80,7 +81,7 @@ class MainActivity : AppCompatActivity() {
         buttonMultiply.setOnClickListener(operationListener)
         buttonPlus.setOnClickListener(operationListener)
         buttonMinus.setOnClickListener(operationListener)
-        buttonEqual.setOnClickListener(operationListener)
+        buttonEquals.setOnClickListener(operationListener)
 
     }
 
@@ -131,7 +132,7 @@ class MainActivity : AppCompatActivity() {
             null
         }
         pendingOperation = savedInstanceState.getString(PENDING_OPERATION)!!;
-        displayOperation.text = pendingOperation;
+        operation.text = pendingOperation;
 
 
     }
